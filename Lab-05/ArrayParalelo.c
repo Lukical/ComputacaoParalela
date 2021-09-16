@@ -4,11 +4,9 @@
 #include <unistd.h>
 #include <pthread.h>
 
-int j; //posição
 void *arrayMult(void *arg) //função que multiplica
 {
     int* num = (int*)arg;
-    int t = j++;
 	*num *= 4;
     return NULL;
 }
