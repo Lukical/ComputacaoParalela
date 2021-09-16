@@ -21,6 +21,9 @@ int main() //main
     for(i = 0; i < size;i++) //inicia threads
     {
         pthread_create(&tid[i],NULL,arrayMult,&v[i]);
+    }
+    for(i = 0; i < size;i++)
+    {
         pthread_join(tid[i], NULL);
     }
     for(i = 0; i < size;i++) //printa vetor
