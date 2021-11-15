@@ -10,23 +10,19 @@ void Taylor(int num,long double* S);
 
 int main()
 {
-        long int l = 1;
+        long int den = 1;
         long double S = 0;
         time_t start = time(NULL);
         while(1)
         {
                 #pragma omp paralell num_threads(thread_count/2)
-                Taylor(l++,&S);
-                printf("\n %.10Lf %ld", S, time(NULL) - start);
-
-                #pragma omp paralell  num_threads(thread_count/2)
-                Taylor(l++, &S);
+                Taylor(den++,&S);
                 printf("\n %.10Lf %ld", S, time(NULL) - start);
         }
 }
 
 void Taylor(int num, long double* S)
 {
-        #pragma omp critical
+        #pragma omp atomic
         *S += (1.0/num);
 }
