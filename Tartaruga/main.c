@@ -15,7 +15,7 @@ int main()
         time_t start = time(NULL);
         while(1)
         {
-                #pragma omp paralell num_threads(thread_count/2)
+                #pragma omp paralell num_threads(thread_count)
                 Taylor(den++,&S);
                 printf("\n %.10Lf %ld", S, time(NULL) - start);
         }
