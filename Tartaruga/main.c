@@ -1,3 +1,5 @@
+//Rodrigo Skurczynski - 41905113
+//Wellerson Rodriguês Alves - 41994647
 #include <stdio.h>
 #include <stdlib.h> 
 #include <time.h>   
