@@ -5,7 +5,7 @@
 #include <time.h>
 #include <omp.h>
 #include <string.h>   
-int thread_count = 100;  
+int thread_count = 200;  
 void Taylor(int num,long double *S);   
 void escreve(FILE* file,long int den,long double S,long int t);      
 int main()                              
@@ -24,12 +24,12 @@ int main()
         else   
         {           
                 char t1[100];   
-                char t2[100];
+                char t2[200];
                 char t3[100]; 
                 while(i < 3)  
                 {        
                         if(i == 0) fgets(t1,100,file);  
-                        else if(i == 1) fgets(t2,100,file);  
+                        else if(i == 1) fgets(t2,200,file);  
                         else if(i == 2) fgets(t3,100,file); 
                         i++; 
                 }    
@@ -66,10 +66,10 @@ void escreve(FILE* file,long int den,long double S,long int t)
                 file = fopen("dados.txt","w+");
                 //perror("fopen()");
                 char c1[100]; 
-                char c2[100];   
+                char c2[200];   
                 char c3[100]; 
                 sprintf(c1,"%ld\n",den);   
-                sprintf(c2,"%.10Lf\n",S); 
+                sprintf(c2,"%.100Lf\n",S); 
                 sprintf(c3,"%ld\n",t);   
                 fputs(c1,file);     
                 fputs(c2,file);    
