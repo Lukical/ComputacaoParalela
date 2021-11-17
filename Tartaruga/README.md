@@ -1,5 +1,10 @@
-<h2>Tartaruga</h2>
-gcc -g -Wall -fopenmp -o main main.c -lm
+<h1>Tartaruga</h1>
+<h2>Execução da tartaruga:</h2>
+gcc -g -Wall -fopenmp -o tartaruga tartaruga.c -lm
+
 ./main
 <h1></h1>
-<img src="https://raw.githubusercontent.com/Lukical/ComputacaoParalela/main/Tartaruga/Screenshot_2.png"/>
+<img src="https://raw.githubusercontent.com/Lukical/ComputacaoParalela/main/Tartaruga/execução.png?token=ANYNFKFKTNPEFSCYFRRQWMDBSUX4S"/>
+Codigo em exeução onde distancia é medido em metros e o tempo medido em segundos.
+<h4>Obs: a execução do tartaruga necessita do arquivo dados.txt para funcionar.</h4>
+Para uma melhor consistencia da execução foi criado um armazenamento de dados para salvar o ponto final da execução do tartaruga, evitando assim perda de dados por algum acontecimento não planejado.
