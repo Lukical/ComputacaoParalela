@@ -6,7 +6,7 @@
 #include <omp.h>  
 #include <string.h> 
 #include <math.h>  
-int thread_count = 200;
+int thread_count = 32;
 void Taylor(int num,long double *S); 
 void escreve(FILE* file,long int den,long double S,long int t); 
 int main()                               
@@ -24,14 +24,14 @@ int main()
         }                 
         else 
         {     
-                char t1[10000]; 
-                char t2[30000];   
-                char t3[10000]; 
+                char t1[100]; 
+                char t2[200];   
+                char t3[100]; 
                 while(i < 3)
                 {
-                        if(i == 0) fgets(t1,10000,file);
-                        else if(i == 1) fgets(t2,30000,file);
-                        else if(i == 2) fgets(t3,10000,file); 
+                        if(i == 0) fgets(t1,100,file);
+                        else if(i == 1) fgets(t2,200,file);
+                        else if(i == 2) fgets(t3,100,file); 
                         i++;                          
                 } 
                 den = atol(t1); 
@@ -44,7 +44,7 @@ int main()
         while(1)            
         {                
                 count ++; 
-                printf("\n Distancia:%.10Lf Tempo:%ld",S,(time(NULL) - start) + t); 
+                printf("\n Distancia:%.50Lf Tempo:%ld",S,(time(NULL) - start) + t); 
                 if(count > 3600) 
                 {          
                         #pragma omp parallel num_threads(1) 
@@ -56,8 +56,9 @@ int main()
         }                       
 }                              
 void Taylor(int num,long double *S) 
-{                                   
-        long double sum = (1.0/num);
+{       
+        unsigned long long n = num;
+        long double sum = (1.0/n);
         #pragma omp atomic
         *S += sum; 
 }    
@@ -67,11 +68,11 @@ void escreve(FILE* file,long int den,long double S,long int t)
         {                     
                 file = fopen("dados.txt","w+");
                 //perror("fopen()");
-                char c1[10000];
-                char c2[30000];
-                char c3[10000];
+                char c1[100];
+                char c2[200];
+                char c3[100];
                 sprintf(c1,"%ld\n",den);
-                sprintf(c2,"%.20000Lf\n",S); 
+                sprintf(c2,"%.100Lf\n",S); 
                 sprintf(c3,"%ld\n",t);  
                 fputs(c1,file);  
                 fputs(c2,file); 
