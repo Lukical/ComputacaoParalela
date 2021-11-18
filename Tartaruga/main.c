@@ -58,7 +58,6 @@ int main()
 void Taylor(int num,long double *S) 
 {                                   
         long double sum = (1.0/num);
-        sum = fabsl(sum); 
         #pragma omp atomic
         *S += sum; 
 }    
